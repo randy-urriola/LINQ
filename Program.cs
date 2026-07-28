@@ -1,11 +1,12 @@
-﻿using System;
+﻿LinqQueries queries = new LinqQueries();
 
-class Program
+ImprimirValores(queries.TodaLaColeccion());
+
+void ImprimirValores(IEnumerable<Book> listadelibros)
 {
-  static void Main(string[] args)
+  Console.WriteLine("\n{0, -60} {1, 9} {2, 15}\n", "Titulo", "N. Paginas", "Fecha pulicacion");
+  foreach(var item in listadelibros)
   {
-    string[] frutas = ["Sandia", "Fresa", "Mango", "Mango de azucar", "Mango tommy"];
-    var esMango = frutas.Where(f => f.StartsWith("Mango")).ToList();
-    esMango.ForEach(m => Console.WriteLine(m));
+    Console.WriteLine("{0, -60} {1, 9} {2, 15}", item.Title, item.PageCount, item.Publisheddate.ToShortDateString());
   }
 }
