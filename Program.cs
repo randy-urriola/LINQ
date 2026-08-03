@@ -13,7 +13,22 @@
 // Console.WriteLine("Todos los libros tienen status: {0}", queries.TodosLosLibrosTienenStatus());
 
 // Libros publicados en 2005
-Console.WriteLine("Algun libro publicado en 2005: {0}", queries.LibrosPublicadosEn2005());
+//Console.WriteLine("Algun libro publicado en 2005: {0}", queries.LibrosPublicadosEn2005());
+
+// Libros que contienen Python
+//ImprimirValores(queries.LibrosContienenPython());
+
+// Libros ordenados por titulo
+//ImprimirValores(queries.LibrosOrdenadosPorTitulo());
+
+// Libros con mas de 450 paginas ordenados de forma descendente
+//ImprimirValores(queries.LibrosConMasDe450PagOrdenadoDesc());
+
+// Tres primeros libros ordenados por fecha
+//ImprimirValores(queries.TresPrimerosLibrosOrdenadosPorFecha());
+
+// Tercer y cuarto libro de mas de 400 paginas
+ImprimirValores(queries.TercerYCuartoLibroDeMasDe400Pag());
 
 void ImprimirValores(IEnumerable<Book> listadelibros)
 {
