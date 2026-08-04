@@ -81,4 +81,59 @@ public class LinqQueries
   {
     return librosCollection.Take(3).Select(p => new Item { Title = p.Title, PageCount = p.PageCount });
   }
+
+  public int CantidadDeLibros()
+  {
+    return librosCollection.Count(p => p.PageCount >= 200 && p.PageCount <= 500);
+  }
+
+  public DateTime MenorFechaPublicacion()
+  {
+    return librosCollection.Min(p => p.Publisheddate);
+  }
+
+  public int MayorNumeroDePaginas()
+  {
+    return librosCollection.Max(p => p.PageCount);
+  }
+
+  public Book LibroConMenorNumeroDePaginas()
+  {
+    return librosCollection.Where(p => p.PageCount > 0).MinBy(p => p.PageCount);
+  }
+
+  public Book LibroConFechaDePublicacionMasReciente()
+  {
+    return librosCollection.MaxBy(p => p.Publisheddate);
+  }
+
+  public int SumaDeTodasLasPaginasDeEntre0Y500()
+  {
+    return librosCollection.Where(p => p.PageCount >= 0 && p.PageCount <= 500).Sum(p => p.PageCount);
+  }
+
+  public string TitulosLibrosDespuesDel2015Concatenados()
+  {
+    return librosCollection
+    .Where(p => p.Publisheddate.Year > 2015)
+    .Aggregate("", (TitulosLibros, next) =>
+    {
+      if (TitulosLibros != string.Empty)
+        TitulosLibros += " - " + next.Title;
+      else
+        TitulosLibros += next.Title;
+
+      return TitulosLibros;
+    });
+  }
+
+  public double PromedioDeCaracteresTitulo()
+  {
+    return librosCollection.Average(p => p.Title.Length);
+  }
+
+  public double PromedioDePaginas()
+  {
+    return librosCollection.Where(p => p.PageCount > 0).Average(p => p.PageCount);
+  }
 }

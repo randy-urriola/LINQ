@@ -1,7 +1,7 @@
 ﻿LinqQueries queries = new LinqQueries();
 
 // Toda la coleccion
-//ImprimirValores(queries.TodaLaColeccion());
+ImprimirValores(queries.TodaLaColeccion());
 
 // Libros despues del 2000
 //ImprimirValores(queries.LibrosDespuesDel2000());
@@ -32,6 +32,33 @@
 
 // El titulo y cantidad de páginas de los Tres primeros libros
 Imprimir(queries.TresPrimerosLibros());
+
+// Cantidad de libros con paginas entre 200 y 500
+//Console.WriteLine("Cantidad de libros con paginas entre 200 y 500: {0}", queries.CantidadDeLibros());
+
+// Menor fecha de publicacion
+//Console.WriteLine($"Menor fecha de publicacion: {queries.MenorFechaPublicacion()}");
+
+// Imprimir la mayor cantidad de páginas de todos los libros
+//Console.WriteLine($"Mayor cantidad de paginas: {queries.MayorNumeroDePaginas()}");
+
+// Imprimir el libro con menor número de páginas pero mayor a 0
+// var libro = queries.LibroConMenorNumeroDePaginas();
+// Console.WriteLine($"Libro con menor número de páginas: {libro.Title} - {libro.PageCount} paginas");
+
+// Imprimir el libro con fecha de publicación más reciente
+// var libroReciente = queries.LibroConFechaDePublicacionMasReciente();
+// Console.WriteLine($"Libro con fecha de publicación más reciente: {libroReciente.Title} - {libroReciente.Publisheddate.ToShortDateString()}");
+
+// Suma de pagina de 0 a 500
+//Console.WriteLine($"Suma de todas las paginas de 0 a 500: {queries.SumaDeTodasLasPaginasDeEntre0Y500()}");
+
+// Titulos de libros publicados despues del 2015
+//Console.WriteLine($"Titulos de libros publicados despues del 2015: {queries.TitulosLibrosDespuesDel2015Concatenados()}");
+
+// Promedio de caracteres de los titulos de libros
+Console.WriteLine($"\nPromedio de caracteres de los titulos de libros: {queries.PromedioDeCaracteresTitulo()}");
+Console.WriteLine($"Promedio de páginas: {queries.PromedioDePaginas()}");
 
 void ImprimirValores(IEnumerable<Book> listadelibros)
 {
