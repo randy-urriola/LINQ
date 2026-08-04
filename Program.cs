@@ -28,7 +28,10 @@
 //ImprimirValores(queries.TresPrimerosLibrosOrdenadosPorFecha());
 
 // Tercer y cuarto libro de mas de 400 paginas
-ImprimirValores(queries.TercerYCuartoLibroDeMasDe400Pag());
+//ImprimirValores(queries.TercerYCuartoLibroDeMasDe400Pag());
+
+// El titulo y cantidad de páginas de los Tres primeros libros
+Imprimir(queries.TresPrimerosLibros());
 
 void ImprimirValores(IEnumerable<Book> listadelibros)
 {
@@ -36,5 +39,14 @@ void ImprimirValores(IEnumerable<Book> listadelibros)
   foreach(var item in listadelibros)
   {
     Console.WriteLine("{0, -60} {1, 9} {2, 15}", item.Title, item.PageCount, item.Publisheddate.ToShortDateString());
+  }
+}
+
+void Imprimir(IEnumerable<Item> listadelibros)
+{
+  Console.WriteLine("\n{0, -60} {1, 9}\n", "Titulo", "N. Paginas");
+  foreach(var item in listadelibros)
+  {
+    Console.WriteLine("{0, -60} {1, 9}", item.Title, item.PageCount);
   }
 }

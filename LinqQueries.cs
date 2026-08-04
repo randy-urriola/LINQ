@@ -71,9 +71,14 @@ public class LinqQueries
     .OrderByDescending(p => p.Publisheddate)
     .Take(3);
   }
-  
+
   public IEnumerable<Book> TercerYCuartoLibroDeMasDe400Pag()
   {
     return librosCollection.Where(p => p.PageCount > 400).Take(4).Skip(2);
+  }
+
+  public IEnumerable<Item> TresPrimerosLibros()
+  {
+    return librosCollection.Take(3).Select(p => new Item { Title = p.Title, PageCount = p.PageCount });
   }
 }
