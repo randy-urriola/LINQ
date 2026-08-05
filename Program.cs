@@ -9,7 +9,7 @@ ImprimirValores(queries.TodaLaColeccion());
 // Libros con mas de 250 paginas y con titulo In Action
 // ImprimirValores(queries.LibrosConMasDe250PagConTituloInAction());
 
-// Todos los libros tienen status
+// All books que tienen status
 // Console.WriteLine("Todos los libros tienen status: {0}", queries.TodosLosLibrosTienenStatus());
 
 // Libros publicados en 2005
@@ -57,8 +57,18 @@ Imprimir(queries.TresPrimerosLibros());
 //Console.WriteLine($"Titulos de libros publicados despues del 2015: {queries.TitulosLibrosDespuesDel2015Concatenados()}");
 
 // Promedio de caracteres de los titulos de libros
-Console.WriteLine($"\nPromedio de caracteres de los titulos de libros: {queries.PromedioDeCaracteresTitulo()}");
-Console.WriteLine($"Promedio de páginas: {queries.PromedioDePaginas()}");
+// Console.WriteLine($"\nPromedio de caracteres de los titulos de libros: {queries.PromedioDeCaracteresTitulo()}");
+// Console.WriteLine($"Promedio de páginas: {queries.PromedioDePaginas()}");
+
+// Libros publicados despues del 2000 agrupados por año de publicación
+ImprimirGrupos(queries.LibrosAgrupadosPorAnio());
+
+// Diccionario de libros por letra
+var diccionario = queries.DiccionarioDeLibrosPorLetra();
+ImprimirDiccionario(diccionario, 'C');
+
+// Libros publicados después del 2005 con más de 500 paginas
+ImprimirValores(queries.LibrosDespuesDel2005ConMasDe500Pag());
 
 void ImprimirValores(IEnumerable<Book> listadelibros)
 {
@@ -76,4 +86,27 @@ void Imprimir(IEnumerable<Item> listadelibros)
   {
     Console.WriteLine("{0, -60} {1, 9}", item.Title, item.PageCount);
   }
+}
+
+void ImprimirGrupos(IEnumerable<IGrouping<int, Book>> listadelibros)
+{
+  foreach (var grupo in listadelibros)
+  {
+    Console.WriteLine("");
+    Console.WriteLine($"\nAño: {grupo.Key}");
+    Console.WriteLine("{0, -60} {1, 9} {2, 15}\n", "Titulo", "N. Paginas", "Fecha pulicacion");
+    foreach (var item in grupo)
+    {
+      Console.WriteLine("{0, -60} {1, 9} {2, 15}", item.Title, item.PageCount, item.Publisheddate.ToShortDateString());
+    }
+  }
+}
+
+void ImprimirDiccionario(ILookup<char, Book> listadelibros, char letra)
+{
+  Console.WriteLine("\n{0, -60} {1, 9} {2, 15}\n", "Titulo", "N. Paginas", "Fecha pulicacion");
+    foreach (var item in listadelibros[letra])
+    {
+      Console.WriteLine("{0, -60} {1, 9} {2, 15}", item.Title, item.PageCount, item.Publisheddate.ToShortDateString());
+    }
 }
